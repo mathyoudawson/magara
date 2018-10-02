@@ -33,7 +33,14 @@ Mağara runs top of [Ruby on Rails](https://rubyonrails.org), and, for now, it d
 * [Ruby](https://www.ruby-lang.org/en/): Check out the Ruby version on the badge.
 * [Yarn](https://yarnpkg.com/en/): please refer to their [installation guide](https://yarnpkg.com/en/docs/install).
 * [Docker Compose](https://docs.docker.com/compose): again, please refer to their [installation guide](https://docs.docker.com/compose/install).
+* [Postgres](https://www.postgresql.org/) Once again, refer to the [Installation guide](https://www.postgresql.org/docs/current/static/tutorial-install.html) and database setup below.
 
+### Database Setup
+```bash
+psql postgres
+CREATE ROLE magara WITH LOGIN PASSWORD 'magara';
+ALTER ROLE magara CREATEDB;
+```
 ### Installation
 
 ```bash
