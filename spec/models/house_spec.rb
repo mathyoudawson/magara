@@ -63,6 +63,11 @@ RSpec.describe House do
     end
 
     it 'is not an included preferred gender' do
+      house.preferred_gender = 3
+      expect(house).not_to be_valid
+    end
+
+    it 'is an included preferred gender' do
       house.preferred_gender = 2
       expect(house).to be_valid
     end
