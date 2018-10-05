@@ -30,14 +30,6 @@ RSpec.describe House do
   end
 
   context 'deposit' do
-    # BUG:
-    #   1) House deposit is valid without
-    #     Failure/Error: expect(house).to be_valid
-    #       expected #<House id: 220, rent: 850, deposit: nil,
-    #   description: "Lorem ipsum dolor sit amet", preferred_gender: 0,
-    #   created_at: "2018-08-13 06:42:25", updated_at: "2018-08-13 06:42:25">
-    #   to be valid, but got errors: Deposit is not a number
-    #
     it 'is valid with' do
       house.deposit = 999
       expect(house).to be_valid
@@ -53,10 +45,10 @@ RSpec.describe House do
       expect(house).not_to be_valid
     end
 
-    # XXX:
-    #   ActiveRecord or something returns string to zero.
-    #
-    # it "can not be string"
+    it 'can not be a string' do
+      house.deposit = 'lots'
+      expect(house).not_to be_valid
+    end
 
     it 'can not be zero' do
       house.deposit = 0

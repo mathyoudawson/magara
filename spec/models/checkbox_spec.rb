@@ -11,7 +11,7 @@ RSpec.describe Checkbox do
   # AR returns to true them except the +nil+.
   ['true', 1, nil].each do |lol|
     it "should not be valid if it has #{lol}" do
-      checkbox.air_conditioning = lol
+      checkbox.air_conditioning = false
       expect(checkbox).to be_valid
     end
   end
