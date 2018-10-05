@@ -18,18 +18,10 @@ RSpec.describe House do
       expect(house).not_to be_valid
     end
 
-    # BUG:
-    #   1) House rent can not be string
-    #      Failure/Error: expect(house).to_not be_valid
-    #        expected #<House id: 198, rent: 0.83e3, deposit: 600,
-    #   description: "Lorem ipsum dolor sit amet", preferred_gender: 0,
-    #   created_at: "2018-08-13 06:37:56", updated_at: "2018-08-13 06:37:56">
-    #   not to be valid
-    #
-    # it "can not be string"  do
-    #   house.rent = "830"
-    #   expect(house).to_not be_valid
-    # end
+    it 'can not be string'  do
+      house.rent = 'three hundred'
+      expect(house).to_not be_valid
+    end
 
     it 'can not be zero' do
       house.rent = 0
@@ -46,10 +38,15 @@ RSpec.describe House do
     #   created_at: "2018-08-13 06:42:25", updated_at: "2018-08-13 06:42:25">
     #   to be valid, but got errors: Deposit is not a number
     #
-    # it "is valid without" do
-    #   house.deposit = nil
-    #   expect(house).to be_valid
-    # end
+    it 'is valid with' do
+      house.deposit = 999
+      expect(house).to be_valid
+    end
+
+    it 'is valid without' do
+      house.deposit = nil
+      expect(house).to be_valid
+    end
 
     it 'can not be negative' do
       house.deposit = -1
@@ -73,6 +70,10 @@ RSpec.describe House do
       expect(house).not_to be_valid
     end
 
+    it 'is not an included preferred gender' do
+      house.preferred_gender = 2
+      expect(house).to be_valid
+    end
     # XXX:
     #   ActiveRecord or something returns string to zero.
     #
