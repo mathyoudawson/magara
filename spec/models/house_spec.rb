@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 RSpec.describe House do
   let(:house) { create(:house, :either) }
@@ -92,6 +93,11 @@ RSpec.describe House do
     it 'is valid if time is future' do
       house.available_at = 1.week.after
       expect(house).to be_valid
+    end
+
+    it 'is not valid without' do
+      house.available_at = nil
+      expect(house).not_to be_valid
     end
   end
 end
