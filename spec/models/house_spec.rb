@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'byebug'
 
 RSpec.describe House do
   subject(:house) { create(:house, :either) }
